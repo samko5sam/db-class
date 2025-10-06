@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container card edit-form">
+    <h2>Edit Item</h2>
+    <form action="{{ url_for('update_item', item_id=item.id) }}" method="POST">
+        <div class="form-group">
+            <label for="name">Item Name</label>
+            <input type="text" id="name" name="name" value="{{ item.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3">{{ item.description }}</textarea>
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Update Item</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
