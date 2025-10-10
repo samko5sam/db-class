@@ -11,5 +11,8 @@
   - [HW1: The To-Do app](#hw1-the-to-do-app)
 
 ## HW1: The To-Do app
+
 - Code: [/HW1](./HW1)
 - Explanation: [https://youtu.be/n_HeP-MRVVA](https://youtu.be/n_HeP-MRVVA)
+
+![HW1 Screenshot](https://github.com/user-attachments/assets/585ed759-f906-4361-bd5e-cfcece702d02)
