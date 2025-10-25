@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<div class="container form-container">
+  <h2>Edit Your Joke</h2>
+  <form method="POST" action="{{ url_for('edit_joke', joke_id=joke._id) }}">
+    <div class="form-group">
+      <label for="joke_content">Your Joke:</label>
+      <textarea id="joke_content" name="joke_content" rows="4" required>
+{{ joke.content }}</textarea
+      >
+    </div>
+    <button type="submit">Update Joke</button>
+  </form>
+</div>
+{% endblock %}
