@@ -13,7 +13,7 @@
 
 - [Database Systems](#database-systems)
   - [HW1: The To-Do app](#hw1-the-to-do-app)
-  - [HW2: The ERD Model Design](#hw2-the-erd-model-design)
+  - [HW2: Music Vote (With ERD)](#hw2-music-vote-with-erd)
   - [HW3: The Joke App](#hw3-the-joke-app)
 
 ## HW1: The To-Do app
