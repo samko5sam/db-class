@@ -24,6 +24,8 @@
 
 ![HW1 Screenshot](https://github.com/user-attachments/assets/585ed759-f906-4361-bd5e-cfcece702d02)
 
+👉 **How to run the app**
+
 ```bash
 pip install -r requirements.txt
 python app.py
@@ -35,8 +37,13 @@ python app.py
 - Code: [/HW2/music-voting-app](./HW2/music-voting-app)
 - Explanation: [https://youtu.be/33NsqejpkMA](https://youtu.be/33NsqejpkMA)
 
-![ERD](./HW2/music-voting-app/HW2-ERD.png)
+![HW2 Screenshot](https://github.com/user-attachments/assets/1b7c63bd-7625-454e-a66e-5b14dac22ebc)
+
+<img width="553" height="553" alt="image" src="./HW2/music-voting-app/HW2-ERD.png" />
+
 *🔼 This ERD (Entity-Relationship Diagram) illustrates how the different tables are connected and how data flows within the application.*
+
+👉 **How to run the app**
 
 Frontend
 ```bash
@@ -55,6 +62,8 @@ python run.py
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - Code: [/HW3/joke-app](./HW3/joke-app)
+
+👉 **How to run the app**
 
 ```bash
 pip install -r requirements.txt
