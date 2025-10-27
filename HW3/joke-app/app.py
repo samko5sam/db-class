@@ -11,14 +11,19 @@ from flask_login import (
     login_required,
     current_user,
 )
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- App and DB Configuration ---
 app = Flask(__name__)
 # It's crucial to set a secret key for session management and flashing messages
-app.config["SECRET_KEY"] = os.urandom(24)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or os.urandom(24)
 
 # Connect to your local MongoDB instance
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(
+    f"mongodb+srv://{os.environ.get('DB_NAME')}:{os.environ.get('DB_PASSWORD')}@cluster0.ciynfbx.mongodb.net/?appName=Cluster0"
+)
 db = client.joke_app_db  # Database name
 jokes_collection = db.jokes
 users_collection = db.users
