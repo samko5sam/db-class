@@ -143,15 +143,21 @@ def logout():
 def post_joke():
     """Page for logged-in users to post a new joke."""
     if request.method == "POST":
-        joke_content = request.form.get("joke_content")
-        if joke_content:
-            jokes_collection.insert_one(
-                {"content": joke_content, "author_username": current_user.username}
-            )
-            flash("Your joke has been posted!", "success")
-            return redirect(url_for("index"))
-        else:
-            flash("Joke content cannot be empty.", "error")
+        joke_contents = request.form.getlist("joke_content")
+        jokes = [content.strip() for content in joke_contents if content.strip()]
+        if jokes:
+            joke_docs = [
+                {"content": joke, "author_username": current_user.username}
+                for joke in jokes
+            ]
+            result = jokes_collection.insert_many(joke_docs)
+            num_jokes = len(jokes)
+            if num_jokes == 1:
+                flash(f"Your joke has been posted!", "success")
+            else:
+                flash(f"Your {num_jokes} jokes have been posted!", "success")
+            return redirect(url_for("user_jokes", username=current_user.username))
+        flash("No valid joke content provided.", "error")
 
     return render_template("post_joke.html")
 
@@ -253,7 +259,7 @@ def delete_joke(joke_id):
 
     jokes_collection.delete_one({"_id": oid})
     flash("Joke deleted successfully.", "success")
-    return redirect(url_for("index"))
+    return redirect(url_for("user_jokes", username=joke["author_username"]))
 
 
 if __name__ == "__main__":

@@ -1,17 +1,47 @@
 {% extends "base.html" %} {% block content %}
 <div class="container form-container">
   <h2>Post a New Joke</h2>
-  <form method="POST" action="{{ url_for('post_joke') }}">
-    <div class="form-group">
-      <label for="joke_content">Your Joke:</label>
-      <textarea
-        id="joke_content"
-        name="joke_content"
-        rows="4"
-        required
-      ></textarea>
+  <form method="POST" action="{{ url_for('post_joke') }}" id="jokeForm">
+    <div id="jokeFields">
+      <div class="form-group joke-field">
+        <label for="joke_content_1">Your Joke:</label>
+        <textarea
+          id="joke_content_1"
+          name="joke_content"
+          rows="4"
+          required
+          placeholder="Enter your joke here..."
+        ></textarea>
+      </div>
     </div>
-    <button type="submit">Post Joke</button>
+    <button type="button" id="addJoke" style="margin-bottom: 1rem;"> + </button><br>
+    <button type="submit">Post Jokes</button>
   </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let jokeCount = 1;
+      const form = document.getElementById('jokeForm');
+      const jokeFields = document.getElementById('jokeFields');
+      const addButton = document.getElementById('addJoke');
+
+      addButton.addEventListener('click', function() {
+        jokeCount++;
+        const newField = document.createElement('div');
+        newField.className = 'form-group joke-field';
+        newField.innerHTML = `
+          <label for="joke_content_${jokeCount}">Joke ${jokeCount}:</label>
+          <textarea
+            id="joke_content_${jokeCount}"
+            name="joke_content"
+            rows="4"
+            placeholder="Enter another joke here..."
+          ></textarea>
+          <button type="button" class="remove-joke" onclick="this.parentElement.remove()"> - </button>
+        `;
+        jokeFields.appendChild(newField);
+      });
+    });
+  </script>
 </div>
 {% endblock %}
