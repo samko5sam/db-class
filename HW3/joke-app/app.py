@@ -12,6 +12,7 @@ from flask_login import (
     current_user,
 )
 from dotenv import load_dotenv
+import requests
 
 load_dotenv()
 
@@ -55,6 +56,14 @@ def load_user(user_id):
     return None
 
 
+def verify_hcaptcha(secret_key, response_token):
+    url = "https://hcaptcha.com/siteverify"
+    data = {"secret": secret_key, "response": response_token}
+    response = requests.post(url, data=data)
+    result = response.json()
+    return result.get("success", False)
+
+
 # --- Web Page Routes ---
 
 
@@ -73,7 +82,16 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for("index"))
 
+    site_key = os.environ.get("HCAPTCHA_SITE_KEY", "")
     if request.method == "POST":
+        hcaptcha_response = request.form.get("h-captcha-response")
+        if not hcaptcha_response:
+            flash("Please complete the captcha.", "error")
+            return redirect(url_for("login"))
+        secret_key = os.environ.get("HCAPTCHA_SECRET_KEY")
+        if not verify_hcaptcha(secret_key, hcaptcha_response):
+            flash("Captcha verification failed. Please try again.", "error")
+            return redirect(url_for("login"))
         username = request.form.get("username")
         password = request.form.get("password")
 
@@ -108,7 +126,7 @@ def login():
                 flash("Invalid username or password.", "error")
                 return redirect(url_for("login"))
 
-    return render_template("login.html")
+    return render_template("login.html", site_key=site_key)
 
 
 @app.route("/logout")
