@@ -92,13 +92,25 @@ def login():
         if not verify_hcaptcha(secret_key, hcaptcha_response):
             flash("Captcha verification failed. Please try again.", "error")
             return redirect(url_for("login"))
-        username = request.form.get("username")
-        password = request.form.get("password")
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "").strip()
 
         user_data = users_collection.find_one({"username": username})
 
+        if not username or not password:
+            flash("Username and password are required.", "error")
+            return redirect(url_for("login"))
+
         if "register" in request.form:
             # --- Registration Logic ---
+            if len(username) < 3 or len(username) > 50:
+                flash("Username must be between 3 and 50 characters.", "error")
+                return redirect(url_for("login"))
+
+            if len(password) < 8 or len(password) > 100:
+                flash("Password must be between 8 and 100 characters.", "error")
+                return redirect(url_for("login"))
+
             if user_data:
                 flash(
                     "Username already exists. Please choose another or log in.", "error"
