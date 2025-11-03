@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
-from pymongo import MongoClient, DESCENDING
+from pymongo import MongoClient, DESCENDING, UpdateOne
+from pymongo.errors import BulkWriteError
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import (
@@ -191,6 +192,75 @@ def user_jokes(username):
     jokes_list = list(user_jokes_cursor)
 
     return render_template("user_jokes.html", jokes=jokes_list, username=username)
+
+
+@app.route("/manage_jokes", methods=["GET", "POST"])
+@login_required
+def manage_jokes():
+    """Page for users to bulk edit/delete their jokes."""
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "delete":
+            ids_to_delete_str = request.form.getlist("delete_ids")
+            if not ids_to_delete_str:
+                flash("No jokes selected for deletion.", "error")
+                return redirect(url_for("manage_jokes"))
+
+            oids_to_delete = [ObjectId(id_str) for id_str in ids_to_delete_str]
+
+            result = jokes_collection.delete_many(
+                {
+                    "_id": {"$in": oids_to_delete},
+                    "author_username": current_user.username,
+                }
+            )
+            flash(f"{result.deleted_count} joke(s) deleted successfully.", "success")
+
+        elif action == "update":
+            updates = []
+            user_jokes = {
+                str(j["_id"]): j["content"]
+                for j in jokes_collection.find(
+                    {"author_username": current_user.username}, {"content": 1}
+                )
+            }
+
+            for key, new_content in request.form.items():
+                if key.startswith("content_"):
+                    joke_id = key.split("_", 1)[1]
+                    stripped_content = new_content.strip()
+                    if (
+                        joke_id in user_jokes
+                        and user_jokes[joke_id] != stripped_content
+                        and stripped_content
+                    ):
+                        updates.append(
+                            UpdateOne(
+                                {"_id": ObjectId(joke_id)},
+                                {"$set": {"content": stripped_content}},
+                            )
+                        )
+            if updates:
+                try:
+                    result = jokes_collection.bulk_write(updates)
+                    flash(
+                        f"{result.modified_count} joke(s) updated successfully.",
+                        "success",
+                    )
+                except BulkWriteError as bwe:
+                    flash("An error occurred during the bulk update.", "error")
+            else:
+                flash("No changes detected to update.", "info")
+
+        return redirect(url_for("manage_jokes"))
+
+    # --- GET Request Logic ---
+    user_jokes_cursor = jokes_collection.find(
+        {"author_username": current_user.username}
+    ).sort("_id", DESCENDING)
+    jokes_list = list(user_jokes_cursor)
+    return render_template("manage_jokes.html", jokes=jokes_list)
 
 
 # --- API Endpoint for Infinite Scroll ---

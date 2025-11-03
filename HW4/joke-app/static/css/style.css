@@ -1,0 +1,301 @@
+/* --- START OF FILE style.css --- */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --border-color: #dee2e6;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  margin: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* --- Navigation --- */
+nav {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a,
+.nav-links span {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main Content & Container --- */
+main {
+  padding: 1rem;
+}
+
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* --- Joke Card --- */
+.joke-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.joke-card p {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.joke-card small {
+  display: block;
+  text-align: right;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* --- Forms --- */
+.form-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box; /* Important for width */
+}
+
+button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-link {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.button-link:hover {
+  opacity: 0.9;
+  color: white;
+  text-decoration: none;
+}
+
+/* --- Flash Messages --- */
+.flash-messages {
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+.flash {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.flash.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+.flash.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* --- Footer & Loading --- */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  color: #6c757d;
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.joke-controls {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between Edit and Delete */
+}
+
+.joke-controls .edit-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+.joke-controls .edit-link:hover {
+  text-decoration: underline;
+}
+
+.joke-controls .delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #dc3545; /* A standard 'danger' red */
+  cursor: pointer;
+  font-size: 1em; /* Inherit font size from parent */
+  font-family: inherit; /* Inherit font family */
+  font-weight: 500;
+}
+
+.joke-controls .delete-button:hover {
+  text-decoration: underline;
+}
+
+.author-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.author-link:hover {
+  text-decoration: underline;
+}
+
+
+/* --- Manage Jokes Page --- */
+.manage-form {
+  padding-top: 1rem;
+}
+
+.manage-joke-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.manage-joke-item:last-of-type {
+  border-bottom: none;
+}
+
+.manage-joke-content {
+  flex-grow: 1; /* Take up available space */
+}
+
+.manage-joke-content label {
+  font-weight: bold;
+  color: #555;
+}
+
+.manage-joke-content textarea {
+  min-height: 60px; /* Ensure a decent starting height */
+  resize: vertical; /* Allow user to resize vertically */
+}
+
+.manage-joke-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.2rem; /* Align with textarea */
+  gap: 0.25rem;
+}
+
+.manage-joke-controls input[type="checkbox"] {
+  transform: scale(1.5); /* Make checkbox easier to click */
+  cursor: pointer;
+}
+
+.manage-form-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+.manage-form-actions .delete-button {
+  background-color: #dc3545; /* Red for delete */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal; /* Override .delete-button from before */
+  text-decoration: none; /* Override .delete-button from before */
+}
+
+.manage-form-actions .delete-button:hover {
+  opacity: 0.9;
+  text-decoration: none; /* Override .delete-button from before */
+}

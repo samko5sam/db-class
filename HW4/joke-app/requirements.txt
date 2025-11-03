@@ -1,0 +1,7 @@
+Flask
+pymongo
+Flask-Login
+bcrypt
+python-dotenv
+requests
+gunicorn

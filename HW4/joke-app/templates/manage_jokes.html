@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Manage Your Jokes</h1>
+
+  {% if jokes %}
+  <form id="manage-jokes-form" method="POST" action="{{ url_for('manage_jokes') }}">
+    <div class="form-container manage-form">
+      <p>Here you can edit the content of your jokes or select multiple jokes to delete at once.</p>
+
+      {% for joke in jokes %}
+      <div class="manage-joke-item">
+        <div class="manage-joke-content">
+          <label for="content_{{ joke._id }}">Joke #{{ loop.revindex }}</label>
+          <textarea name="content_{{ joke._id }}" id="content_{{ joke._id }}" rows="3" class="form-group textarea" style="width:100%">{{ joke.content }}</textarea>
+        </div>
+        <div class="manage-joke-controls">
+          <label for="delete_{{ joke._id }}">Delete</label>
+          <input type="checkbox" name="delete_ids" value="{{ joke._id }}" id="delete_{{ joke._id }}">
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="manage-form-actions form-buttons">
+        <button type="submit" name="action" value="update">Update Jokes</button>
+        <button type="submit" name="action" value="delete" class="delete-button" formnovalidate>Delete Selected Jokes</button>
+      </div>
+
+    </div>
+  </form>
+  {% else %}
+  <div class="joke-card">
+    <p>You haven't posted any jokes yet. <a href="{{ url_for('post_joke') }}">Why not post one now?</a></p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const manageForm = document.getElementById('manage-jokes-form');
+    if (manageForm) {
+      manageForm.addEventListener('submit', function(event) {
+        // Find which button was clicked
+        const action = document.activeElement.value;
+        if (action === 'delete') {
+          const checkedBoxes = document.querySelectorAll('input[name="delete_ids"]:checked');
+          if (checkedBoxes.length === 0) {
+            alert('Please select at least one joke to delete.');
+            event.preventDefault(); // Stop form submission
+            return;
+          }
+          if (!confirm('Are you sure you want to delete the ' + checkedBoxes.length + ' selected joke(s)?')) {
+            event.preventDefault(); // Stop form submission
+          }
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

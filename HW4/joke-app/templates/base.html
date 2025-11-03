@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinite Scroll Jokes</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body
+    {%
+    if
+    current_user.is_authenticated
+    %}data-username="{{ current_user.username }}"
+    {%
+    endif
+    %}
+  >
+    <nav>
+      <div class="nav-container">
+        <a href="{{ url_for('index') }}" class="logo">JokeApp</a>
+        <div class="nav-links">
+          {% if current_user.is_authenticated %}
+          <a href="{{ url_for('user_jokes', username=current_user.username) }}"
+            >{{ current_user.username }}</a
+          >
+          <a href="{{ url_for('post_joke') }}">Post New</a>
+          <a href="{{ url_for('logout') }}">Logout</a>
+          {% else %}
+          <a href="{{ url_for('login') }}">Login</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>JokeApp &copy; 2025</p>
+    </footer>
+
+    <!-- Script goes at the end of body for faster page load -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
