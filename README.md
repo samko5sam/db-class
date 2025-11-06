@@ -15,6 +15,7 @@
   - [HW1: The To-Do app](#hw1-the-to-do-app)
   - [HW2: Music Vote (With ERD)](#hw2-music-vote-with-erd)
   - [HW3: The Joke App](#hw3-the-joke-app)
+  - [HW4: The Joke App+](#hw4-the-joke-app)
 
 ## HW1: The To-Do app
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -62,6 +63,22 @@ python run.py
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - Code: [/HW3/joke-app](./HW3/joke-app)
+- Explanation: []()
+- Online demo: [https://jokeapp.sk5s.cyou](https://jokeapp.sk5s.cyou)
+
+👉 **How to run the app**
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+## HW4: The Joke App+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+- Code: [/HW4/joke-app](./HW4/joke-app)
+- Explanation: []()
+- Online demo: [https://jokeapp.sk5s.cyou](https://jokeapp.sk5s.cyou)
 
 👉 **How to run the app**
 
