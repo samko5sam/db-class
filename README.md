@@ -66,6 +66,8 @@ python run.py
 - Explanation: [https://youtu.be/rC0nTsmWGuE](https://youtu.be/rC0nTsmWGuE)
 - Online demo: [https://jokeapp.sk5s.org](https://jokeapp.sk5s.org)
 
+![jokeapp sk5s org](https://github.com/user-attachments/assets/e550231b-4b54-456e-85c7-8681f1ec9364)
+
 👉 **How to run the app**
 
 ```bash
