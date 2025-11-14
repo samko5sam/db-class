@@ -63,8 +63,8 @@ python run.py
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - Code: [/HW3/joke-app](./HW3/joke-app)
-- Explanation: []()
-- Online demo: [https://jokeapp.sk5s.cyou](https://jokeapp.sk5s.cyou)
+- Explanation: [https://youtu.be/rC0nTsmWGuE](https://youtu.be/rC0nTsmWGuE)
+- Online demo: [https://jokeapp.sk5s.org](https://jokeapp.sk5s.org)
 
 👉 **How to run the app**
 
@@ -78,7 +78,7 @@ python app.py
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - Code: [/HW4/joke-app](./HW4/joke-app)
 - Explanation: []()
-- Online demo: [https://jokeapp.sk5s.cyou](https://jokeapp.sk5s.cyou)
+- Online demo: [https://jokeapp.sk5s.org](https://jokeapp.sk5s.org)
 
 👉 **How to run the app**
 

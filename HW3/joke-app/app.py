@@ -162,10 +162,10 @@ def post_joke():
                 {"content": joke, "author_username": current_user.username}
                 for joke in jokes
             ]
-            result = jokes_collection.insert_many(joke_docs)
+            jokes_collection.insert_many(joke_docs)
             num_jokes = len(jokes)
             if num_jokes == 1:
-                flash(f"Your joke has been posted!", "success")
+                flash("Your joke has been posted!", "success")
             else:
                 flash(f"Your {num_jokes} jokes have been posted!", "success")
             return redirect(url_for("user_jokes", username=current_user.username))
