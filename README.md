@@ -79,7 +79,7 @@ python app.py
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 - Code: [/HW4/joke-app](./HW4/joke-app)
-- Explanation: []()
+- Explanation: [https://youtu.be/817Ufgk0c44](https://youtu.be/817Ufgk0c44)
 - Online demo: [https://jokeapp.sk5s.org](https://jokeapp.sk5s.org)
 
 👉 **How to run the app**
