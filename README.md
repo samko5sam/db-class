@@ -12,10 +12,16 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) -->
 
 - [Database Systems](#database-systems)
+  - [Final Project](#final-project)
   - [HW1: The To-Do app](#hw1-the-to-do-app)
   - [HW2: Music Vote (With ERD)](#hw2-music-vote-with-erd)
   - [HW3: The Joke App](#hw3-the-joke-app)
   - [HW4: The Joke App+](#hw4-the-joke-app)
+
+## Final Project
+[<img src="https://github.com/user-attachments/assets/f6469379-d673-419e-8405-ed1120f223af" width="23" > Miria - The Creator's Digital Marketplace](https://github.com/samko5sam/miria)
+
+[![screenshot-1765683106217](https://github.com/user-attachments/assets/e49b9d1f-d9c8-4655-9d07-b8f4d9eaffe8)](https://miria.zeabur.app)
 
 ## HW1: The To-Do app
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
